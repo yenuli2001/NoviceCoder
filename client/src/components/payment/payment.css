@@ -1,0 +1,62 @@
+/* Subscribe page  */
+
+.subscribeContainer{
+    width: 25%;
+    margin: 4rem auto;
+    text-align: center;
+    
+}
+
+.subscribebox{
+    background-color: #f5f6fa;
+    margin-top: 2rem;
+    box-shadow: 0px 2px 10px gray;
+    border-radius: 10px;
+}
+.subscribeHead{
+    background-color: #E19937;
+    color: white;
+    height: 6vh;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+
+}
+.subscribeContent{
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.subscribeBtn button{
+    border: none;
+    width: 100%;
+    background-color: #E19937;
+    color: white;
+    height: 5vh;
+    border-radius: 0 0 10px 10px;
+}
+.subscribeBtn button:hover{
+  transition: 1s;
+  background-color: black;
+  cursor: pointer;
+}
+
+/* Payement Success  */
+
+.successIcon{
+    font-size: 3rem;
+    margin-top: 20px;
+}
+
+.profileLink a{
+    color: black;
+    text-decoration: none;
+}
+
+.notfound{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items:center ;
+    justify-content: center;
+}

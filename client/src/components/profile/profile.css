@@ -1,0 +1,119 @@
+.profileContainer{
+    width: 100%;
+    padding: 5rem 0 0 10rem;
+    display: flex;
+}
+.avatorImg{
+    padding: 5rem;
+    text-align: center
+} 
+.avatorIcon img{
+    width: 300px;
+    min-height: 300px;
+    border-radius: 50%;
+}
+.userdata{
+    padding: 7rem 0;
+}
+.userName,
+.userAdmin{
+    display: flex;
+    margin: 10px;
+}
+.userName h3,
+.userAdmin h3{
+    margin-right: 15px;
+}
+
+.userAdmin button,
+.profilebtn button,
+.userPlaylist button{
+    background-color: #E19937;
+    border: none;
+    height: 3vh;
+    color: white;
+    cursor: pointer;
+    width: 9rem;
+    
+}
+.profilebtn button{
+    margin: 5px;
+    width: 8rem;
+}
+.userPlaylist{
+    padding-left: 10rem;
+
+}
+.playlistimg{
+    display: flex ;
+    flex-direction: column;
+}
+.userPlaylist button{
+    margin-top: 5px;
+}
+.changePasswordContainer form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; 
+    padding-top: 8rem;
+}
+.changePasswordContainer form h1{
+    margin-bottom: 20px;
+}
+.changePasswordContainer input{
+    width: 20%;
+    height: 5vh;
+    padding: 10px;
+    margin: 5px;
+}
+.changePasswordContainer button{
+    width: 20%;
+    height: 5vh;
+    background-color: #E19937;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.changePasswordContainer button:hover{
+  background-color: #E19937;
+  transition: 1s;
+}
+.click{
+    cursor: pointer;
+    color: #E19937;
+    text-decoration:underline;
+}
+
+.avatar button{
+    background-color: #E19937;
+    display: block;
+    color: white;
+    border: none;
+    width: 200px;
+    height: 3vh;
+    margin-left: 50px;
+}
+.avatar button:hover{
+background-color: black;
+transition: 1s;
+}
+
+.playlistimg img{
+    max-width: 200px;
+    height: 200;
+}
+
+.progress-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    height: 8px;
+    background-color: #4caf50;
+    width: 0;
+    transition: width 0.4s ease;
+  }

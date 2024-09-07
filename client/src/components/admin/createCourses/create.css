@@ -1,0 +1,73 @@
+
+ 
+
+  .create{
+    width: 80%;
+    float: left;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+}
+.create h1{
+    margin-bottom: 20px;
+}
+
+.create form{
+  display: flex;
+  flex-direction: column;
+}
+
+.create input,
+select{
+    width: 400px;
+    height: 4vh;
+    margin: 10px;
+    outline: none;
+    border: 1px solid #E19937;
+    padding: 10px;
+}
+
+.create select{
+  height: 6vh;
+
+}
+
+.create button{
+    width: 400px;
+    margin: auto;
+    height: 4vh;
+    background-color: #E19937;
+    color: white;
+    border: none;
+}
+
+.create button:hover{
+    cursor: pointer;
+    background-color: black;
+    transition: all 1s;
+}
+
+  .sidebar{
+    width: 20%;
+    height: auto;
+    float: right;
+    padding-top: 5rem;
+  }
+  .avator input{
+    border: none;
+    height: 6vh;
+
+}
+.preAvator{
+    display: flex;
+    justify-content: center;
+}
+.preAvator img{
+    width: 200px;
+    height: 100px;
+    object-fit: cover;
+}
+

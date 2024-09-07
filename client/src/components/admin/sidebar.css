@@ -1,0 +1,19 @@
+.btn button{
+    background-color: #E19937;
+    color: white;
+    border: none;
+    width: 12rem;
+    height: 5vh;
+    text-align:start;
+    margin: 10px;
+    padding: 5px;
+}
+.btn button:hover{
+    background-color: black;
+}
+.btn button:focus{
+    background-color: black;
+}
+.btn button:active{
+color: red;
+}

@@ -1,0 +1,180 @@
+.headerContainer {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    transition: 1s;
+
+}
+
+.headerContainer2 {
+    height: 108vh;
+    width: 25%;
+    background-color: #E19937;
+    margin-top: -50px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    z-index: 3;
+
+}
+
+.headerBtn button {
+    background-color: #E19937;
+    width: 50px;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border-radius: 15px;
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    z-index: 9;
+    margin: 10px;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+
+}
+
+.logout {
+    background-color: white;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+    padding-top: 30px;
+}
+
+.links a:hover {
+    color: black;
+}
+
+.registerBtn {
+    position: absolute;
+    bottom: 0;
+    margin: 0 0 60px 40px;
+    color: white;
+}
+
+.registerBtn span {
+    margin: 10px;
+}
+
+.registerBtn a {
+    color: #E19937;
+    text-decoration: none;
+    padding: 8px 20px;
+    background-color: white;
+}
+
+.registerBtn a:hover {
+    color: white;
+    background-color: #ffa82f;
+    transition: 1s;
+
+}
+
+.active {
+    transform: translateX(-100%);
+}
+
+.adminBtn {
+    padding: 8px 20px;
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    margin: 0 0 10px 70px;
+}
+
+.adminBtn button {
+    border: none;
+    color: #E19937;
+    cursor: pointer;
+    background-color: inherit;
+}
+
+
+.registerBtn button {
+    border: none;
+    color: #E19937;
+    padding: 8px 20px;
+    cursor: pointer;
+}
+
+.registerBtn button:hover {
+    color: white;
+    background-color: #ffa82f;
+    transition: 1s;
+}
+
+@media screen and (max-width: 1000px) {
+    .headerContainer2 {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .headerContainer2 {
+        width: 35%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .headerContainer2 {
+        width: 43%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .headerContainer2 {
+        width: 100%;
+    }
+
+    .headerContainer2 {
+        padding-left: 25%;
+    }
+    .registerBtn{
+        margin-left: 0;
+    }
+    .adminBtn{
+        margin-left: 50px;
+    }
+}
+@media screen and (max-width: 400px) {
+    .headerContainer2 {
+        padding-left: 20%;
+    }
+    .adminBtn{
+        margin-left: 40px;
+    }
+}
+@media screen and (max-width: 350px) {
+    .headerContainer2 {
+        padding-left: 10%;
+    }
+    .adminBtn{
+        margin-left: 40px;
+    }
+}
+@media screen and (max-width: 280px) {
+    .headerContainer2 {
+        padding-left: 2%;
+    }
+    .adminBtn{
+        margin-left: 40px;
+    }
+}
+@media screen and (max-width: 235px) {
+    .registerBtn a, .registerBtn button {
+        padding: 8px 10px;
+    }
+    .adminBtn{
+        padding: 8px 10px;
+    }
+}

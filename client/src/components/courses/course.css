@@ -1,0 +1,60 @@
+
+
+.courseData{
+    margin: 20px;
+    width: 250px;
+    text-align: start;
+    transition: all 0.5s;
+}
+.courseData:hover{
+    transform: translateY(-10px);
+}
+.courseData img{
+    width: 270px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+.courseData h4{
+    margin: 10px;
+    font-size: 1.4rem;
+}
+.courseData p{
+    position: relative;
+    max-height: 35px;
+    min-height: 35px;
+    overflow: hidden;
+    padding-right: 0.6rem;
+    font-size: 0.9rem;
+}
+
+.blogData p::before{
+    position: absolute;
+    content:'....';
+    bottom: 0;
+    right: 0;
+
+}
+
+.courseBtn button{
+border: none;
+width: 100px;
+height: 4vh;
+color: white;
+background-color: #E19937;
+margin: 10px;
+cursor: pointer;
+}
+.courseBtn button:hover{
+    background-color: white;
+    color: black;
+    transition: 1s;
+}
+@media screen and (max-width: 450px) {
+    .courseData img{
+        width: 250px;
+        height: 200px;
+    }
+}
