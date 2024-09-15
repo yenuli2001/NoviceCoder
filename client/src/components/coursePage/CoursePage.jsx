@@ -1,6 +1,9 @@
 import './coursePage.css';
 import introVideo from '../../assets/videos/intro.mp4';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+
+
 
 const CoursePage = () => {
   const [lectureNumber, setLectureNumber] = useState(0);
@@ -22,6 +25,7 @@ const CoursePage = () => {
         'This lecture discusses practical applications of the course material.',
     },
   ];
+
 
   return (
     <>
@@ -55,10 +59,6 @@ const CoursePage = () => {
             </button>
           ))}
         </div>
-      </div>
-      <div className="demo">
-        <h1>Just a demo site</h1>
-        <p>Courses are not uploaded</p>
       </div>
     </>
   );
