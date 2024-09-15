@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import ErrorMiddleware from "./middlewars/Error.js";
 import other from "./routes/otherRoutes.js";
+import codeSnippetsRoutes from "./routes/codeSnippetRoutes.js";
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(
 app.use("/api/v1", course);
 app.use("/api/v1", users);
 app.use("/api/v1", other);
+app.use("/api/v1", codeSnippetsRoutes);
 
 export default app;
 
