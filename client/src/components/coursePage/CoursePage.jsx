@@ -1,9 +1,11 @@
 import './coursePage.css';
 import introVideo from '../../assets/videos/intro.mp4';
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CoursePage = () => {
   const [lectureNumber, setLectureNumber] = useState(0);
+  const navigate = useNavigate();
   const lectures = [
     {
       _id: '1',
@@ -25,7 +27,7 @@ const CoursePage = () => {
 
   return (
     <>
-      <div className="coursePageContainer p-20 border rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-600 hover:shadow-xl transition-shadow duration-300" >
+      <div className="p-20 transition-shadow duration-300 border rounded-lg shadow-lg coursePageContainer bg-gradient-to-r from-blue-500 to-purple-600 hover:shadow-xl">
         <div className="leftSideContainer">
           <video
             autoPlay
@@ -55,10 +57,15 @@ const CoursePage = () => {
             </button>
           ))}
         </div>
-      </div>
-      <div className="demo">
-        <h1>Just a demo site</h1>
-        <p>Courses are not uploaded</p>
+        <div className="buttonContainer">
+          <Link to="/code-editor">
+            <button className="compilerButton">Compiler</button>
+          </Link>
+
+          <button className="streamButton" onClick={() => navigate('/lobby')}>
+            Stream
+          </button>
+        </div>
       </div>
     </>
   );

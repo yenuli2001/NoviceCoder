@@ -22,6 +22,7 @@ import CreateCourse from './components/admin/createCourses/Create';
 import AdminCourse from './components/admin/adminCourses/AdminCourses';
 import User from './components/admin/user/User';
 import CodeEditor from './components/compiler/CodeEditor';
+import Lobby from './components/webRTC/lobby';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Toaster, toast } from 'react-hot-toast';
@@ -79,6 +80,8 @@ const App = () => {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/request" element={<Request />} />
+
+              <Route path="/lobby" element={<Lobby />} />
 
               <Route
                 path="/code-editor"
