@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const VITE_API_BASE_URL = 'http://localhost:5000/api';
+const VITE_API_BASE_URL = 'http://localhost:5000/api/v1';
 
 export const saveCodeSnippets = data => {
   return axios.post(`${VITE_API_BASE_URL}/codes`, data);
