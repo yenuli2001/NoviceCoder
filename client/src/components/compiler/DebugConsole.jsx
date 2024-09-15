@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Box, Textarea } from '@chakra-ui/react';
 
 const DebugConsole = ({ logs }) => {
