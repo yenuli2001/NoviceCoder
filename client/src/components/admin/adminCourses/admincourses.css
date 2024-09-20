@@ -71,7 +71,7 @@ td {
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: gray;
+  background-color: black;
   padding: 80px;
 }
 
@@ -84,6 +84,8 @@ td {
 
 .coursepopupleftInner{
   padding: 50px;
+  max-height: 400px; 
+  overflow-y: auto;
 }
 .coursepopupright{
   float: right;
@@ -111,7 +113,7 @@ padding-top: 50px;
 .videoCard button{
   width: 20%;
   margin-top: 10px;
-  background-color: #E19937;
+  background-color: #845695;
   color: white;
   border: none;
   cursor: pointer;
@@ -134,7 +136,7 @@ padding-top: 50px;
     height: 4vh;
     margin: 10px;
     outline: none;
-    border: 1px solid #E19937;
+    border: 1px solid #845695;
     padding: 10px;
 }
 
@@ -142,7 +144,7 @@ padding-top: 50px;
   width: 50%;
   margin: 100px auto;
   height: 4vh;
-  background-color: #E19937;
+  background-color: #845695;
   color: white;
   border: none;
 }
@@ -155,12 +157,12 @@ padding-top: 50px;
   width: 20%;
   height: 6vh;
   color: white;
-  background-color: black;
+  background-color: #845695;
   border: none;
   margin: auto;
 }
 .coursepopup .closeBtn:hover{
-background-color: #E19937;
+background-color: #845695;
 transition: 1s;
 }
 

@@ -40,6 +40,7 @@ const CoursePopUp = (props) => {
         <div className="coursepopup">
 
             <div className="coursepopupleft">
+            <button className='closeBtn' onClick={closePageBtn}>Back</button>
                 <div className="coursepopupleftInner">
 
                     <h1>{props.title}</h1>
@@ -64,6 +65,7 @@ const CoursePopUp = (props) => {
                     }
 
                 </div>
+                
             </div>
             <div className="coursepopupright">
                 <form onSubmit={handleSubmit}>
@@ -94,8 +96,9 @@ const CoursePopUp = (props) => {
 
                     <button type='submit'>Upload Lecture</button>
                 </form>
+                
             </div>
-            <button className='closeBtn' onClick={closePageBtn}>Close Page</button>
+            
         </div>
     ) : "";
 }
@@ -110,6 +113,7 @@ function VideoCard(props) {
                 <div className="lectureData">
                     <h3>{`#${props.num} ${props.title}`}</h3>
                     <p>{props.description}</p>
+                    
                     <button onClick={() => props.deleteBtn(props.courseId, props.lectureId)} >
                         Delete</button>
                 </div>
