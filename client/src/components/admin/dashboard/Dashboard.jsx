@@ -37,7 +37,9 @@ const Dashboard = () => {
           ) : (
             <div style={styles.dashboardContent}>
               <div style={styles.mainContent}>
-                <h1 style={styles.heading}>Dashboard</h1>
+                <h1 className="text-5xl font-bold text-white" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', color: 'black' }}>
+                  Dashboard
+                </h1>
                 <p>{`Last Change was on ${String(new Date()).split('G')[0]}`}</p>
 
                 {/* Profile Navigation Buttons */}
@@ -99,7 +101,7 @@ const styles = {
   },
   sidebar: {
     flex: 1,
-    marginTop:100,
+    marginTop: 100,
     backgroundColor: '#2d3748', // bg-gray-800
     border: '1px solid #4a5568', // border-gray-600
     borderRadius: '8px', // Rounded corners
