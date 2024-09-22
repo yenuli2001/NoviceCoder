@@ -1,3 +1,8 @@
+/* Add this to your CSS file */
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+
+
 .aboutContainer{
     padding-top: 6rem;
     display: flex;
