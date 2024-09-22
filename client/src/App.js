@@ -21,7 +21,6 @@ import Dashboard from './components/admin/dashboard/Dashboard';
 import CreateCourse from './components/admin/createCourses/Create';
 import AdminCourse from './components/admin/adminCourses/AdminCourses';
 import User from './components/admin/user/User';
-import CodeEditor from './components/compiler/CodeEditor';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Toaster, toast } from 'react-hot-toast';
@@ -29,14 +28,6 @@ import { useEffect } from 'react';
 import { getProfile } from './redux/actions/user';
 import { ProtectedRoute } from 'protected-route-react';
 import Loader from './components/layout/loader/Loader';
-import { Box, ChakraProvider, extendTheme } from '@chakra-ui/react';
-
-const codeEditorTheme = extendTheme({
-  config: {
-    initialColorMode: 'dark',
-    useSystemColorMode: false,
-  },
-});
 
 const App = () => {
   window.addEventListener('contextmenu', e => {
@@ -81,22 +72,22 @@ const App = () => {
               <Route path="/request" element={<Request />} />
 
               <Route
-                path="/code-editor"
-                element={
-                  <ChakraProvider theme={codeEditorTheme}>
-                    <Box minH="100vh" bg="#2d1f41" color="white" px={6} py={8}>
-                      <CodeEditor />
-                    </Box>
-                  </ChakraProvider>
-                }
-              />
-
-              <Route
                 path="/login"
                 element={
                   <ProtectedRoute
                     isAuthenticated={!isAuthenticated}
                     redirect="/profile"
+                  >
+                    <Login />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/logout"
+                element={
+                  <ProtectedRoute
+                    isAuthenticated={!isAuthenticated}
+                    redirect="/login"
                   >
                     <Login />
                   </ProtectedRoute>
@@ -116,7 +107,9 @@ const App = () => {
               <Route
                 path="/forgetpassword"
                 element={
-                  <ProtectedRoute isAuthenticated={!isAuthenticated}>
+                  <ProtectedRoute 
+                  isAuthenticated={!isAuthenticated}
+                  >
                     <ForgetPassword />
                   </ProtectedRoute>
                 }
@@ -167,15 +160,6 @@ const App = () => {
                   </ProtectedRoute>
                 }
               />
-
-              {/* <Route
-                path="/codeEditor"
-                element={
-                  <ProtectedRoute isAuthenticated={isAuthenticated}>
-                    <CodeEditor />
-                  </ProtectedRoute>
-                }
-              /> */}
 
               {/* Admin Routes  */}
 
