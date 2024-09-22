@@ -1,134 +1,114 @@
-import React, { useEffect, useState } from 'react';
-import './dashboard.css';
+import React, { useEffect } from 'react';
 import Sidebar from '../Sidebar';
-import { RiArrowDownLine, RiArrowUpLine } from 'react-icons/ri';
-import { LineChart, DoughnutChart } from './Chart.js';
-import { useDispatch, useSelector } from 'react-redux';
-import { dashboardStats } from '../../../redux/actions/admin';
 import Loader from '../../layout/loader/Loader';
 import Footer from '../../layout/Footer';
-
-
-const Databox = ({ title, num, pers, profit }) => (
-  <div className="box">
-    <p>{title}</p>
-    <p>
-      <strong>{num} </strong> {pers}{' '}
-      {profit ? (
-        <RiArrowUpLine color="green" />
-      ) : (
-        <RiArrowDownLine color="red" />
-      )}
-    </p>
-    <p>Since last month</p>
-  </div>
-
-);
-
-const Bar = ({ title, progress }) => {
-  const [filledWidth, setFilledWidth] = useState(0);
-
-  useEffect(() => {
-    setFilledWidth(progress);
-  }, [progress]);
-
-  return (
-    <div className="bar">
-      <h3>{title}</h3>
-      <div className="data">
-        0%{' '}
-        <div className="barLine">
-          <div className="fillBar" style={{ width: `${filledWidth}%` }}></div>
-        </div>{' '}
-        100%
-      </div>
-    </div>
-
-  );
-};
+import backgroundImage1 from './../../../assets/images/img5.jpeg'; // Import your header image
+import { useDispatch, useSelector } from 'react-redux';
+import { dashboardStats } from '../../../redux/actions/admin';
+import { Link } from 'react-router-dom';
+import {
+  RiEditFill,
+  RiKeyFill,
+  RiSettings5Fill,
+} from 'react-icons/ri';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const {
-    loading,
-    viewsCount,
-    subscriptionCount,
-    usersCount,
-    subscriptionPercentage,
-    viewsPercentage,
-    usersPercentage,
-    viewsProfit,
-  } = useSelector(state => state.admin);
+  const { loading } = useSelector(state => state.admin);
 
   useEffect(() => {
     dispatch(dashboardStats());
   }, [dispatch]);
-  console.log('subscriptionCount:', subscriptionCount);
-  console.log('usersCount:', usersCount);
 
   return (
     <>
-      
-      <div className="min-h-screen flex flex-col justify-center pt-16 pb-32 bg-gradient-to-r from-blue-500 to-purple-600">
-        <div className="dashboardContainer">
+      {/* Header Image */}
+      <div style={{ backgroundColor: '#845695', minHeight: '100vh', paddingBottom: '40px' }}>
+        <img
+          src={backgroundImage1}
+          alt="Header"
+          className="w-full h-64 object-cover"
+          style={{ marginBottom: '20px' }}
+        />
+
+        <div style={styles.dashboardContainer}>
           {loading ? (
             <Loader />
           ) : (
-            <div className="dashboard ">
-              <p>{`Last Change was on ${String(new Date()).split('G')[0]}`}</p>
-              <h1 className="text-3xl">Dashboard</h1>
-              <div className="databox">
-                <Databox
-                  title="views"
-                  num={viewsCount}
-                  pers={viewsPercentage}
-                  profit={viewsProfit}
-                />
-                <Databox
-                  title="Users"
-                  num={usersCount}
-                  pers={usersPercentage}
-                  profit={usersPercentage}
-                />
-                <Databox
-                  title="Subscription"
-                  num={subscriptionCount}
-                  pers={subscriptionPercentage}
-                  profit={subscriptionPercentage}
-                />
-              </div>
-              <div className="graph">
-                <h2>Views Graph</h2>
-                {/* <LineChart views={stats?.map(item => item.views) || []} /> */}
-                <LineChart views={[3, 4]} />
-              </div>
-              <div className="mt-8 p-6 border rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-600 hover:shadow-xl transition-shadow duration-300">
-                <div className="progress">
-                  <h2 className="text-3xl">Progress Bar</h2>
-                  <Bar title="Views" progress={viewsPercentage} />
-                  <Bar title="Users" progress={usersPercentage} />
-                  <Bar title="Subscription" progress={subscriptionPercentage} />
+            <div style={styles.dashboardContent}>
+              <div style={styles.mainContent}>
+                <h1 style={styles.heading}>Dashboard</h1>
+                <p>{`Last Change was on ${String(new Date()).split('G')[0]}`}</p>
+
+                {/* Profile Navigation Buttons */}
+                <div style={styles.buttonContainer}>
+                  <Link to="/profile">
+                    <button className="bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-600">
+                      Profile
+                    </button>
+                  </Link>
+                  <Link to="/contact">
+                    <button className="bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-600">
+                      Contact
+                    </button>
+                  </Link>
+                  <Link to="/courses">
+                    <button className="bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-600">
+                      All Courses
+                    </button>
+                  </Link>
                 </div>
-                <div className="flex justify-left" style={{ margin: '10px' }}>
-                  <div className="userProgress">
-                    <h2 className="text-3xl" style={{ margin: '20px' }}>Users</h2>
-                    <DoughnutChart
-                      users={[subscriptionCount, usersCount - subscriptionCount]}
-                    />
-                  </div>
-                </div>
+              </div>
+
+              <div style={styles.sidebar}>
+                <Sidebar />
               </div>
             </div>
-
           )}
-          <div className="sidebar">
-            <Sidebar />
-          </div>
         </div>
       </div>
-    </>
 
+      <Footer />
+    </>
   );
 };
 
 export default Dashboard;
+
+const styles = {
+  dashboardContainer: {
+    display: 'flex',
+    width: '100%',
+    maxWidth: '1400px',
+    padding: '20px',
+    margin: '0 auto', // Center the container
+  },
+  dashboardContent: {
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'space-between', // Space between main content and sidebar
+  },
+  mainContent: {
+    flex: 3,
+    paddingRight: '20px',
+  },
+  heading: {
+    fontSize: '3rem',
+    marginBottom: '20px',
+    color: '#000',
+  },
+  sidebar: {
+    flex: 1,
+    marginTop:100,
+    backgroundColor: '#2d3748', // bg-gray-800
+    border: '1px solid #4a5568', // border-gray-600
+    borderRadius: '8px', // Rounded corners
+    padding: '20px', // Add some padding
+  },
+  buttonContainer: {
+    display: 'flex',
+    flexDirection: 'row', // Arrange buttons in a row
+    gap: '10px', // Space between buttons
+    marginTop: '20px', // Space above buttons
+  },
+};
