@@ -6,7 +6,7 @@ import { registerForm } from '../../redux/actions/user';
 import { toast } from 'react-hot-toast';
 import Footer from '../layout/Footer';
 import './login.css';
-import backgroundImage from '../../assets/images/img2.jpeg';
+import backgroundImage1 from '../../assets/images/img5.jpeg';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -44,81 +44,82 @@ const Register = () => {
 
   return (
     <>
-      <div>
-          <img src={backgroundImage} alt="Description of image 2" className="w-full h-48 object-cover"style={{ marginTop: '5px', marginBottom:'20px', paddingLeft:'10px', paddingRight:'10px',height:'300px'}}/>
-            <h1 className="mb-6 text-4xl font-bold text-center">Welcome to NoviceCoder!</h1>
+      <div style={{ backgroundColor: '#845695', minHeight: '100vh', display: 'flex' }}>
+        {/* Left Side: Image */}
+        <div className="left-side-image" style={{ flex: '1', position: 'relative' }}>
+          <img
+            src={backgroundImage1}
+            alt="Description of image 2"
+            className="w-full h-full object-cover"
+            style={{ filter: 'brightness(80%)', height: '100vh' }} // Adjust height to fit the full viewport
+          />
         </div>
-      <div className="h-screen bg-gradient-to-r from-blue-500 to-purple-600">
-        <div className="flex items-center justify-center h-full">
-          <div
-            className="w-full max-w-md p-8"
-            style={{
-              backgroundColor: 'white',
-              borderRadius: '8px',
-              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-              position: 'relative',
-              width: '100%',
-              maxWidth: '500px',
-              height: '750px', // Adjusts height based on content
-              margin: '0 20px' // Margin to prevent touching edges
-            }}
-          >
-            <div className="loginContainer">
-              <h1 className="mb-6 text-3xl font-bold text-center">Register</h1>
 
-              <form action="POST" onSubmit={formHandler}>
-                {/* Add avatar preview here */}
-                <div className="preAvator">
-                  {avatarPreview ? (
-                    <img
-                      src={avatarPreview}
-                      alt="Avatar Preview"
-                      style={{ maxWidth: '100px', maxHeight: '100px' }}
-                    />
-                  ) : (
-                    <FaRegUserCircle size={100} />
-                  )}
-                </div>
+        {/* Right Side: Form */}
+        <div className="right-side-form" style={{ flex: '1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div style={{ width: '80%' }} className="max-w-md p-8 bg-orange-100 border border-gray-300 shadow-md rounded-xl"> {/* Increased mt for more spacing */}
+          <div style={{ width: '99%' }} className="max-w-md p-8 bg-gray-800 border border-gray-300 shadow-md rounded-xl">
+            <h1 className="text-4xl font-bold text-center mb-10 text-white">Register</h1>
 
+            <form onSubmit={formHandler} className="space-y-4" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <div className="preAvator" style={{ textAlign: 'center', marginBottom: '20px' }}>
+                {avatarPreview ? (
+                  <img
+                    src={avatarPreview}
+                    alt="Avatar Preview"
+                    style={{ maxWidth: '100px', maxHeight: '100px', borderRadius: '50%' }}
+                  />
+                ) : (
+                  <FaRegUserCircle size={100} />
+                )}
+              </div>
+
+              <input
+                type="text"
+                placeholder="Enter Your Name..."
+                value={name}
+                onChange={e => setName(e.target.value)}
+                style={{ display: 'block', width: '100%', marginBottom: '10px', padding: '10px', borderRadius: '4px', border: '1px solid #ddd' }}
+              />
+              <input
+                type="email"
+                placeholder="Email Address..."
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                style={{ display: 'block', width: '100%', marginBottom: '10px', padding: '10px', borderRadius: '4px', border: '1px solid #ddd' }}
+              />
+              <input
+                type="password"
+                placeholder="Password..."
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                style={{ display: 'block', width: '100%', marginBottom: '10px', padding: '10px', borderRadius: '4px', border: '1px solid #ddd' }}
+              />
+
+              {/* Avatar input */}
+              <div className="avatar" style={{ marginBottom: '20px' }}>
                 <input
-                  type="text"
-                  placeholder="Enter Your Name"
-                  value={name}
-                  onChange={e => setName(e.target.value)}
-                  style={{ display: 'block', width: '100%', marginBottom: '10px', padding: '10px', borderRadius: '4px', border: '1px solid #ddd' }}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleAvatarChange}
+                  style={{ color: 'lightblue' }} // Light blue text color for "No file chosen"
                 />
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                  style={{ display: 'block', width: '100%', marginBottom: '10px', padding: '10px', borderRadius: '4px', border: '1px solid #ddd' }}
-                />
-                <input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
-                  style={{ display: 'block', width: '100%', marginBottom: '10px', padding: '10px', borderRadius: '4px', border: '1px solid #ddd' }}
-                />
+              </div>
 
-                {/* for Avatar */}
-                <div className="avator" style={{ marginBottom: '10px' }}>
-                  <input type="file" accept="image/*" onChange={handleAvatarChange} />
-                </div>
-
-                <button
-                  type="submit"
-                  style={{ padding: '10px 20px', borderRadius: '4px', backgroundColor: '#E19937', color: 'white', border: 'none', cursor: 'pointer', hover:'#E19938' }}>
-                  Register
-                </button>
-                <div className="loginLinks hover:underline" style={{ marginTop: '10px' }}>
-                  <Link to="/login">Already have an account?</Link>
-                </div>
-              </form>
-            </div>
+              <button
+                type="submit"
+                className="w-full py-2 text-white transition duration-300 bg-indigo-500 rounded-lg hover:bg-indigo-600 transform hover:scale-105">
+                Register
+              </button>
+              <div className="loginLinks" style={{ marginTop: '10px', textAlign: 'center' }}>
+                <Link to="/login" style={{ color: 'lightblue', textDecoration: 'underline' }}> {/* Set the "Already have an account?" text to light blue */}
+                  Already have an account?
+                </Link>
+              </div>
+            </form>
           </div>
         </div>
+      </div>
       </div>
       <Footer />
     </>

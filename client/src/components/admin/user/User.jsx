@@ -6,8 +6,7 @@ import { allUsers, deleteUser, updateUserRole } from '../../../redux/actions/adm
 import Loader from '../../layout/loader/Loader';
 import { toast } from 'react-hot-toast';
 import Footer from '../../layout/Footer';
-
-
+import backgroundImage1 from '../../../assets/images/img5.jpeg'; // Change the filename to your actual image
 
 const User = () => {
   const { users, loading, error, message } = useSelector((state) => state.admin);
@@ -36,26 +35,32 @@ const User = () => {
 
   return (
     <>
-      <div className="min-h-screen flex flex-col justify-center pt-16 pb-32 bg-gradient-to-r from-blue-500 to-purple-600">
+      <div style={{ backgroundColor: '#845695', minHeight: '100vh', paddingBottom: '40px' }}>
+        <img
+          src={backgroundImage1}
+          alt="Header"
+          className="w-full h-64 object-cover"
+          style={{ marginBottom: '20px' }}
+        />
+
         {loading ? (
           <Loader />
         ) : (
           <div className="userContainer flex">
             <div className="user flex-grow">
-              <h1 className="text-3xl font-bold mb-6 text-black">All Users</h1>
+              <h1 style={{ marginTop: 20 }} className="text-4xl font-bold mb-6 text-black">All Users</h1>
               <div className="overflow-x-auto">
-                <table className="min-w-full table-auto bg-indigo-200 rounded-lg shadow-lg">
-                  <thead className="bg-gray-200 text-black uppercase text-sm leading-normal">
-                    <tr>
-                      <th className="py-3 px-6 text-left">ID</th>
-                      <th className="py-3 px-6 text-left">Name</th>
-                      <th className="py-3 px-6 text-left">Email</th>
-                      <th className="py-3 px-6 text-left">Role</th>
-                      <th className="py-3 px-6 text-left">Subscription</th>
-                      <th className="py-3 px-6 text-left">Action</th>
+                <table className="min-w-full bg-white shadow-md rounded-lg">
+                  <thead>
+                    <tr className="bg-purple-700 text-white text-left text-sm uppercase font-semibold tracking-wider">
+                      <th className="py-4 px-6 text-center">ID</th>
+                      <th className="py-4 px-6 text-center">Name</th>
+                      <th className="py-4 px-6 text-center">Email</th>
+                      <th className="py-4 px-6 text-center">Role</th>
+                      <th className="py-4 px-6 text-center">Action</th> {/* Removed Subscription column */}
                     </tr>
                   </thead>
-                  <tbody className="text-black text-sm font-light">
+                  <tbody>
                     {Array.isArray(users) &&
                       users.map((item) => (
                         <Row
@@ -75,7 +80,7 @@ const User = () => {
           </div>
         )}
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
@@ -84,49 +89,26 @@ export default User;
 
 function Row({ item, deletehandler, updatehandler }) {
   return (
-    <tr className="border-b border-black hover:bg-gray-100">
-      <td className="py-3 px-6 text-left whitespace-nowrap">
-        <span className="font-medium">{item._id}</span>
-      </td>
-      <td className="py-3 px-6 text-left">
-        <span>{item.name}</span>
-      </td>
-      <td className="py-3 px-6 text-left">
-        <span>{item.email}</span>
-      </td>
-      <td className="py-3 px-6 text-left">
-        <span
-          className={`${
-            item.role === 'Admin' ? 'text-green-600' : 'text-yellow-600'
-          }`}
-        >
+    <tr className="border-b border-gray-200 hover:bg-purple-50 transition-colors duration-200">
+      <td className="py-4 px-6 text-gray-700">{item._id}</td>
+      <td className="py-4 px-6">{item.name}</td>
+      <td className="py-4 px-6">{item.email}</td>
+      <td className="py-4 px-6">
+        <span className={`font-semibold ${item.role === 'Admin' ? 'text-green-500' : 'text-yellow-500'}`}>
           {item.role}
         </span>
       </td>
-      <td className="py-3 px-6 text-left">
-        <span
-          className={`${
-            item.subscription && item.subscription.status === 'Active'
-              ? 'text-green-500'
-              : 'text-red-500'
-          }`}
-        >
-          {item.subscription && item.subscription.status === 'Active'
-            ? 'Active'
-            : 'Not Active'}
-        </span>
-      </td>
-      <td className="py-3 px-6 text-left">
-        <div className="flex item-center justify-start space-x-2">
+      <td className="py-4 px-6">
+        <div className="flex space-x-2">
           <button
             onClick={() => updatehandler(item._id)}
-            className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition duration-200"
+            className="bg-indigo-500 text-white px-3 py-1 rounded hover:bg-indigo-600 transition duration-300 transform hover:scale-105"
           >
             Change Role
           </button>
           <button
             onClick={() => deletehandler(item._id)}
-            className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition duration-200"
+            className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition duration-300 transform hover:scale-105"
           >
             Delete
           </button>
