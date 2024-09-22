@@ -14,7 +14,7 @@ const Home = () => {
         <div></div>
         <div className="text-center text-white">
           <h1 className="mb-4 text-5xl font-extrabold">
-            NoviceCode <br /> Programming Assisting System
+            NoviceCoder <br /> Programming Assisting System
           </h1>
           <p className="mb-8 text-lg">
             Find Valuable Content At Reasonable Prices. A platform for college
