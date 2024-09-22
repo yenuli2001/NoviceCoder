@@ -4,6 +4,7 @@ import './course.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
 const Course = props => {
   const dispatch = useDispatch();
 
@@ -26,7 +27,7 @@ const Course = props => {
   }, [message, dispatch, error]);
 
   return (
-    <div className="p-6 border rounded-lg shadow-lg bg-white hover:shadow-xl transition-shadow duration-300">
+    <div className="p-6 border rounded-lg shadow-lg bg-orange-100 hover:shadow-xl transition-shadow duration-300">
       <img
         src={props.img}
         alt="course-img"
@@ -42,7 +43,7 @@ const Course = props => {
         <h5 className="text-gray-600">{`Views: ${props.views}`}</h5>
         <div className="mt-4 flex space-x-4">
           <Link to={`/course/${props.id}`}>
-            <button className="px-6 py-2 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg hover:from-blue-600 hover:to-blue-800 transition duration-300">
+            <button className="px-6 py-2 bg-gradient-to-r from-indigo-500 to-indigo-700 text-white rounded-lg hover:from-indigo-600 hover:to-indigo-800 transition duration-300">
               Watch Now
             </button>
           </Link>
