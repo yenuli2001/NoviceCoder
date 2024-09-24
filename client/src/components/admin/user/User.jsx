@@ -48,7 +48,7 @@ const User = () => {
         ) : (
           <div className="userContainer flex">
             <div className="user flex-grow">
-              <h1 style={{ marginTop: 20 }} className="text-4xl font-bold mb-6 text-black">All Users</h1>
+              <h1 style={{ marginTop: 20, marginBottom:10, textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', color: 'black' }} className="text-5xl font-bold text-white">All Users</h1>
               <div className="overflow-x-auto">
                 <table className="min-w-full bg-white shadow-md rounded-lg">
                   <thead>
