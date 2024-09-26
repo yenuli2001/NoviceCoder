@@ -9,11 +9,11 @@ import { toast } from 'react-hot-toast';
 import { removeFromPlaylist } from '../../redux/actions/course';
 import Footer from '../layout/Footer';
 import backgroundImage3 from '../../assets/images/img5.jpeg';
-import ProgressBar from 'react-progressbar';
 
 const Profile = ({ user }) => {
   const [avatar, setAvatar] = useState(null);
   const [avatarPreview, setAvatarPreview] = useState(null);
+  const [progressValues, setProgressValues] = useState({});
 
   const dispatch = useDispatch();
   const { message: profileMessage, error: profileError } = useSelector(
@@ -41,7 +41,16 @@ const Profile = ({ user }) => {
       toast.success(courseMessage);
       dispatch({ type: 'clearCourseMessage' });
     }
-  }, [dispatch, profileError, profileMessage, courseError, courseMessage]);
+
+    // Set initial progress values for the playlist items
+    if (user.playlist.length > 0) {
+      const initialProgress = {};
+      user.playlist.forEach(item => {
+        initialProgress[item.course] = 'Progress'; // Default value for progress dropdown
+      });
+      setProgressValues(initialProgress);
+    }
+  }, [dispatch, profileError, profileMessage, courseError, courseMessage, user.playlist]);
 
   const removeFromPlaylistHandler = id => {
     dispatch(removeFromPlaylist(id));
@@ -68,25 +77,41 @@ const Profile = ({ user }) => {
     }
   };
 
+  // Handle the progress change from the dropdown
+  const handleProgressChange = (e, courseId) => {
+    const newProgress = e.target.value;
+    setProgressValues(prev => ({ ...prev, [courseId]: newProgress }));
+
+    // Trigger the toast if 'Completed' or 'In Progress' is selected
+    if (newProgress === 'Completed') {
+      toast.success('Wowza you have completed the course!!');
+    } else if (newProgress === 'In Progress') {
+      toast('Keep going, you got this!', {
+        icon: '💪',
+      });
+    }
+
+    // Here you can dispatch an action to update the course progress in the backend
+    // For example: dispatch(updateCourseProgress(courseId, newProgress));
+  };
+
   return (
     <>
       <div style={{ backgroundColor: '#845695', minHeight: '100vh', paddingBottom: '40px' }}>
-        {/* Header section with background image */}
         <div className="relative">
           <img
             src={backgroundImage3}
             alt="Profile Background"
             className="w-full h-64 object-cover"
-            style={{ filter: 'brightness(80%)' }} // Slightly darken the image
+            style={{ filter: 'brightness(80%)' }}
           />
         </div>
 
         <div className="flex justify-between items-center" style={{ marginTop: 30, paddingLeft: 20, paddingRight: 20 }}>
-        <h1 className="text-5xl font-bold text-white" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', color: 'black' }}>
-            Welcome,{user.name}!
+          <h1 className="text-5xl font-bold text-white" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', color: 'black' }}>
+            Welcome, {user.name}!
           </h1>
 
-          {/* Add Buttons for Request Course and All Courses */}
           <div className="flex space-x-4">
             <Link to="/request">
               <button className="px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition duration-300">
@@ -103,7 +128,6 @@ const Profile = ({ user }) => {
 
         <div className="w-full max-w-screen-xl mx-auto mt-20 p-8 rounded-xl bg-orange-100">
           <div className="flex flex-col lg:flex-row gap-8">
-            {/* Profile Section */}
             <div className="flex-1 bg-gray-800 p-8 rounded-xl shadow-lg">
               <h2 className="text-2xl font-bold text-white mb-6 text-center">Profile</h2>
               <div className="flex flex-col items-center">
@@ -164,7 +188,6 @@ const Profile = ({ user }) => {
                       <p className="text-gray-900 text-center">{user.createdAt.split('T')[0]}</p>
                     </div>
                   </div>
-
                 </div>
 
                 <div className="flex justify-center space-x-4 mt-8">
@@ -212,14 +235,24 @@ const Profile = ({ user }) => {
                           </button>
                         </div>
                       </div>
-                      <div className="w-full bg-gray-300 rounded-full h-2.5 mt-4">
-                        <ProgressBar
-                          completed={item.progress}
-                          className="bg-indigo-600 h-2.5 rounded-full"
-                          style={{ width: `${item.progress}%` }}
-                        />
+
+                      {/* Dropdown to select progress */}
+                      <div className="w-full mt-4">
+                        <label htmlFor={`progress-${item.course}`} className="block text-sm text-gray-600 mb-1">
+                          Update Progress:
+                        </label>
+                        <select
+                          id={`progress-${item.course}`}
+                          value={progressValues[item.course]}
+                          onChange={(e) => handleProgressChange(e, item.course)}
+                          className="w-full bg-indigo-300 rounded-md p-2"
+                        >
+                          <option value="Progress">Progress</option>
+                          <option value="In Progress">In Progress</option>
+                          <option value="Completed">Completed</option>
+                        </select>
                       </div>
-                      <p className="text-sm text-gray-500 mt-1">{item.progress}% completed</p>
+                      <p className="text-sm text-gray-500 mt-1">Current progress: {progressValues[item.course]}</p>
                     </div>
                   ))}
                 </div>
