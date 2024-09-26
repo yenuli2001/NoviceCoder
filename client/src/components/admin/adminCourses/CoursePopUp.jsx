@@ -51,15 +51,16 @@ const CoursePopUp = (props) => {
                             return (
 
                                 <VideoCard
-                                    key={i}
+                                    key={item._id || i}
                                     title={item.title}
                                     description={item.description}
                                     num={i + 1}
+                                    videoUrl={item.video.url}
                                     lectureId={item._id}
                                     courseId={props.id}
                                     deleteBtn={props.deleteBtn}
                                 />
-                            );
+                            )
                         })
 
                     }
@@ -113,7 +114,9 @@ function VideoCard(props) {
                 <div className="lectureData">
                     <h3>{`#${props.num} ${props.title}`}</h3>
                     <p>{props.description}</p>
-                    
+                    <video className="preVideo" controls src={props.videoUrl}>
+                    Your browser does not support the video tag.
+                    </video>
                     <button onClick={() => props.deleteBtn(props.courseId, props.lectureId)} >
                         Delete</button>
                 </div>
