@@ -72,7 +72,7 @@ const Contact = () => {
         </div>
 
         {/* Contact Form */}
-        <h1 className="mb-4 text-3xl font-bold text-black text-center">Contact Us</h1>
+        <h1 className="mb-4 text-3xl font-bold text-black text-center" style={{marginTop:40}}>Contact Us</h1>
         <div style={{ width: '30%' }} className="h-full max-w-screen-xl mx-auto mt-4 p-8 rounded-xl bg-orange-100 shadow-lg"> {/* Reduced mt-20 to mt-4 */}
         <div className="flex flex-col items-center">
           <div className="flex-1 max-w-md p-6 bg-gray-800 border border-gray-300 rounded-lg shadow-lg">
