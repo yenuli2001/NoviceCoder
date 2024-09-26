@@ -48,7 +48,7 @@ const Contact = () => {
             style={{ filter: 'brightness(80%)' }}
           />
         </div>
-        <div className="flex justify-between items-center mb-6 text-black px-8">
+        <div className="flex justify-between items-center mb-6 text-black px-8"  style={{ marginTop: 30, paddingLeft: 20, paddingRight: 20 }}>
         <h1 className="text-5xl font-bold text-white" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', color: 'black' }}>
             Welcome to NoviceCoder!
           </h1>
