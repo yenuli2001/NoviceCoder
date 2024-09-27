@@ -1,0 +1,3 @@
+# NoviceCoder
+
+NoviceCoder provides an online compiler supporting multiple programming languages for users to practice coding. The compiler incorporates AI-driven features that give real-time assistance in understanding errors and how to better improve code, besides learning best practices. Moreover, the inbuilt debugging tool allows users to identify and fix issues efficiently. Another unique aspect of NoviceCoder is live streaming and online chat. This creates an interactive and collaborative space to learn where one can engage with experts in real-time. NoviceCoder provides course management and user management capabilities to provide structured learning paths and trace individual progress.

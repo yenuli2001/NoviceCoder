@@ -1,0 +1,44 @@
+
+
+  .user{
+    width: 80%;
+    float: left;
+  }
+
+  .sidebar{
+    width: 20%;
+    height: auto;
+    float: right;
+    padding-top: 5rem;
+  }
+
+  .user{
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+.user table{
+  margin: 10px;
+  text-align: center;
+}
+.tableRow th{
+  padding: 20px 0 0 70px;
+}
+.rowFunction td{
+  padding: 20px 0 0 70px
+}
+.rowFunction td button{
+  width: 100%;
+  height: 2vh;
+  margin: 2px;
+  background-color: #E19937;
+  color: white;
+  border: none;
+}
+.rowFunction td button:hover{
+  background-color: black;
+}
+

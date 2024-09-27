@@ -1,0 +1,186 @@
+.adminCourses {
+  width: 80%;
+  float: left;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 15%;
+}
+
+td img{
+  width: 100px;
+  height: 50px;
+}
+
+td {
+  text-align: center;
+}
+
+
+.adminTable {
+  width: 70%;
+  height: 80vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: auto;
+}
+
+.adminCourses table tbody td {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+
+}
+
+
+.sidebar {
+  width: 20%;
+  height: auto;
+  float: right;
+  padding-top: 5rem;
+}
+
+
+.tableRow th {
+  padding: 20px 0 0 70px;
+}
+
+.rowFunction td {
+  padding: 20px 0 0 70px
+}
+
+.rowFunction td button {
+  width: 100%;
+  height: 2vh;
+  margin: 2px;
+  background-color: #E19937;
+  color: white;
+  border: none;
+}
+
+.rowFunction td button:hover {
+  background-color: black;
+}
+
+
+/* popup page  */
+.coursepopup{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #424242;
+  padding: 80px;
+}
+
+.coursepopupleft{
+  width: 70%;
+  height: 80vh;
+  background-color: white;
+  float: left;
+}
+
+.coursepopupleftInner{
+  padding: 50px;
+  max-height: 400px; 
+  overflow-y: auto;
+  gap: 20px;
+}
+.coursepopupright{
+  float: right;
+  width: 29%;
+  background-color: white;
+  height: 80vh;
+  margin-left: 1%;
+text-align: center;
+padding-top: 50px;
+}
+.videoCard{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.lectureData{
+  height: 60vh;
+  box-shadow: 0px 0px 5px rgb(87, 87, 87);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+}
+
+.videoCard button{
+  width: 20%;
+  margin-top: 10px;
+  background-color: #845695;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+
+}
+
+
+.preVideo{
+  width: 80%;
+  height: 200px;
+  object-fit: cover;
+  margin: 10px 0 30px 40px;
+}
+.preVideo video{
+  width: 100%;
+  max-height: 160px;
+  /* object-fit: cover; */
+}
+.coursepopupright input{
+    width: 80%;
+    height: 4vh;
+    margin: 10px;
+    outline: none;
+    border: 1px solid #845695;
+    padding: 10px;
+}
+
+.coursepopupright button{
+  width: 50%;
+  margin: 100px auto;
+  height: 4vh;
+  background-color: #845695;
+  color: white;
+  border: none;
+}
+.video input{
+  border: none;
+  height: 6vh;
+}
+
+.coursepopup .closeBtn{
+  width: 20%;
+  height: 6vh;
+  color: white;
+  background-color: #845695;
+  border: none;
+  margin: auto;
+}
+.coursepopup .closeBtn:hover{
+background-color: #845695;
+transition: 1s;
+}
+
+button{
+  cursor: pointer;
+}
+
+.lectureVideo {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin-top: 10px;
+}

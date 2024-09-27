@@ -1,0 +1,80 @@
+.loginContainer{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+    max-width: 400px;;
+}
+.loginContainer h1{
+    margin-bottom: 20px;
+}
+
+.loginContainer form{
+  display: flex;
+  flex-direction: column;
+}
+
+.loginContainer input{
+    width: 400px;
+    height: 4vh;
+    margin: 10px;
+    outline: none;
+    border: 1px solid #E19937;
+    padding: 20px;
+}
+
+.loginContainer button{
+    width: 400px;
+    margin: auto;
+    height: 4vh;
+    background-color: #E19937;
+    color: white;
+    border: none;
+}
+
+.loginContainer button:hover{
+    cursor: pointer;
+    background-color: black;
+    transition: all 1s;
+}
+.loginLinks{
+    display: flex;
+    justify-content: space-around;
+}
+
+.loginLinks a{
+    color: black;
+    text-decoration: none;
+}
+
+
+/* for registration page  */
+.avator input{
+    border: none;
+}
+.preAvator{
+    display: flex;
+    justify-content: center;
+}
+
+
+@media screen and (max-width: 450px) {
+    .loginContainer input, .loginContainer button{
+        width: 300px;
+    }
+    
+}
+@media screen and (max-width: 330px) {
+    .loginContainer input, .loginContainer button{
+        width: 280px;
+    }
+    
+}
+@media screen and (max-width: 300px) {
+    .loginContainer input, .loginContainer button{
+        width: 250px;
+    }
+    
+}

@@ -1,0 +1,84 @@
+/* Add this to your CSS file */
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+
+
+.aboutContainer{
+    padding-top: 6rem;
+    display: flex;
+}
+.profile{
+    width: 40%;
+    text-align: center;
+
+}
+.profile img{
+    width: 50%;
+    border-radius: 50%;
+    margin-top: 4rem;
+}
+.details{
+    width: 60%;
+    text-align: center;
+    padding: 3rem 7rem;
+}
+.details h1{
+    margin: 20px;
+}
+.details p{
+line-height: 25px;
+}
+
+.aboutBtn button{
+    background-color: #E19937;
+    border: none;
+    color: white;
+    width: 200px;
+    height: 4vh;
+    margin: 20px;
+}
+.aboutBtn button:hover{
+    background-color: black;
+    transition: 1s;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1100px) {
+    .aboutContainer{
+        padding-top: 4rem;
+    }
+    .aboutContainer{
+        flex-direction: column;
+        align-items: center;
+    }
+    .profile{
+        width: 25%;    
+    }
+    .profile img{
+        width: 100%;
+        margin-top: 0;
+    }
+    .details{
+        width: 90%;
+        text-align: center;
+        padding: 0;
+    }
+  }
+@media screen and (max-width: 550px) {
+    .aboutContainer{
+        padding-top: 3rem;
+    }
+    .profile{
+        width: 40%;    
+    }
+  }
+@media screen and (max-width: 400px) {
+    .profile{
+        width: 50%;    
+    }
+  }
+@media screen and (max-width: 400px) {
+    .profile{
+        width: 60%;    
+    }
+  }
