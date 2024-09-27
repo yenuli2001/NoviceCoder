@@ -67,7 +67,7 @@ const AdminCourses = () => {
             </div>
             <div className="adminCoursesContainer flex-grow flex">
                 <div className="adminCourses flex-grow p-6">
-                    <h1 style={{ marginTop: 10 }} className="text-4xl font-bold mb-6 text-black">All Available Courses</h1>
+                    <h1 style={{ marginTop: 2, marginBottom:10, textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', color: 'black' }} className="text-5xl font-bold text-white">All Available Courses</h1>
                     <div className="overflow-x-auto">
                         <table className="min-w-full bg-white shadow-md rounded-lg">
                             <thead className="bg-purple-700 text-white text-left text-sm uppercase font-semibold tracking-wider text-center">
