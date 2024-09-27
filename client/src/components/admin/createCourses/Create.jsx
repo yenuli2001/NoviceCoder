@@ -6,6 +6,7 @@ import { createCourse } from '../../../redux/actions/admin';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-hot-toast';
 import Footer from '../../layout/Footer';
+import backgroundImage3 from '../../../assets/images/img5.jpeg'
 
 const Create = () => {
   const [title, setTitle] = useState('');
@@ -63,9 +64,17 @@ const Create = () => {
 
   return (
     <>
-      <div className="mt-8 p-6 border rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-600 hover:shadow-xl transition-shadow duration-300">
+      <div style={{ backgroundColor: '#845695', minHeight: '100vh', paddingBottom: '40px' }}>
+        <div className="relative">
+          <img
+            src={backgroundImage3}
+            alt="Profile Background"
+            className="w-full h-64 object-cover"
+            style={{ filter: 'brightness(80%)', marginBottom:20 }}
+          />
+        </div>
       <div className="flex flex-col p-4 md:flex-row">
-        <div className="w-full p-6 bg-indigo-200 rounded-lg shadow-md md:w-2/3">
+        <div className="w-full p-6 bg-gray-200 rounded-lg shadow-md md:w-2/3">
           <h1 className="mb-4 text-3xl font-bold">Create Course</h1>
           <form onSubmit={submitHandler} className="space-y-4">
             {/* Add avatar preview here */}
@@ -123,7 +132,7 @@ const Create = () => {
             </div>
             <button
               type="submit"
-              className="w-full p-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+              className="w-full bg-indigo-500 text-white px-3 py-1 rounded hover:bg-indigo-600 transition duration-300 transform hover:scale-105"
             >
               Create
             </button>
