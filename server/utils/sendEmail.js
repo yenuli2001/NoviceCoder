@@ -13,7 +13,7 @@ export const sendEmail = async (to, subject, text) => {
 
     // Send the email
     await transport.sendMail({
-        // from: process.env.SMTP_USER, // Make sure to specify the "from" field
+        from: process.env.SMTP_USER, 
         to,
         subject,
         text
