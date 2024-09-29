@@ -70,6 +70,55 @@ export const deleteLecture = (courseId, lectureId) => async dispatch => {
   }
 };
 
+// Get course details by ID
+export const getCourseDetails = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: 'getCourseDetailsRequest' }); // Dispatch request action
+    const { data } = await axios.get(`${server}/courseDetail/${id}`, {
+      withCredentials: true, // Include credentials if needed
+    });
+    console.log("course id:", data);
+    dispatch({
+      type: 'getCourseDetailsSuccess',
+      payload: data.course,
+    });
+  } catch (error) {
+    dispatch({
+      type: 'getCourseDetailsFail',
+      payload: error.response ? error.response.data.message : "Server Error", // Safely access error message
+    });
+  }
+};
+
+// Update course
+export const updateCourse = (id, courseData) => async (dispatch) => {
+  try {
+    dispatch({ type: 'updateCourseRequest' }); // Dispatch request action
+    const payload = {};
+    courseData.forEach((value, key) => {
+      payload[key] = value;
+    });
+    const { data } = await axios.put(`${server}/updateCourse/${id}`, payload, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      withCredentials: true, // Include credentials if needed
+    });
+    console.log("course:", data);
+    dispatch({
+      type: 'updateCourseSuccess',
+      payload: data.message,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: 'updateCourseFail',
+      payload: error.response ? error.response.data : "Server Error", // Safely access error message
+    });
+  }
+};
+
+
 export const allUsers = () => async dispatch => {
   try {
     dispatch({ type: 'allUsersRequest' });

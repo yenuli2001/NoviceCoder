@@ -7,6 +7,7 @@ import { allCourses, allLectures } from '../../../redux/actions/course';
 import { addLecture, deleteCourse, deleteLecture } from '../../../redux/actions/admin';
 import { toast } from 'react-hot-toast';
 import Footer from '../../layout/Footer';
+import { useNavigate } from 'react-router-dom';
 
 const AdminCourses = () => {
     const [popupBtn, setPopupBtn] = React.useState(false);
@@ -16,6 +17,7 @@ const AdminCourses = () => {
     const { courses, lectures } = useSelector(state => state.course);
     const { error, message } = useSelector(state => state.admin);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const courseDetail = (courseId, title) => {
         dispatch(allLectures(courseId));
@@ -63,7 +65,7 @@ const AdminCourses = () => {
                         <table className="min-w-full table-auto bg-indigo-200 rounded-lg shadow-lg">
                             <thead className="bg-gray-200 text-black uppercase text-sm leading-normal">
                                 <tr>
-                                    <th className="py-3 px-6 text-left">ID</th>
+                                    
                                     <th className="py-3 px-6 text-left">Poster</th>
                                     <th className="py-3 px-6 text-left">Title</th>
                                     <th className="py-3 px-6 text-left">Category</th>
@@ -81,6 +83,7 @@ const AdminCourses = () => {
                                             item={item}
                                             deleteHandler={deleteHandler}
                                             courseDetail={courseDetail}
+                                            navigate={navigate}
                                         />
                                     ))}
                             </tbody>
@@ -108,12 +111,10 @@ const AdminCourses = () => {
 
 export default AdminCourses;
 
-function Row({ item, deleteHandler, courseDetail }) {
+function Row({ item, deleteHandler, courseDetail, navigate }) {
     return (
         <tr className="border-b border-gray-200 hover:bg-gray-100">
-            <td className="py-3 px-6 text-left whitespace-nowrap">
-                <span className="font-medium">{item._id}</span>
-            </td>
+            
             <td className="py-3 px-6 text-left">
                 <img src={item.poster.url} alt="poster" className="poster-img" />
             </td>
@@ -139,6 +140,12 @@ function Row({ item, deleteHandler, courseDetail }) {
                         className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition duration-200"
                     >
                         View Lectures
+                    </button>
+                    <button
+                        onClick={() => navigate(`/updateCourse/${item._id}`)}
+                        className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition duration-200"
+                    >
+                        Update
                     </button>
                     <button
                         onClick={() => deleteHandler(item._id)}

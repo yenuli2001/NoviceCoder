@@ -4,6 +4,7 @@ const initialState = {
   loading: false,
   message: null,
   error: null,
+  courseDetail: [],
 };
 
 export const adminReducer = createReducer(initialState,(builder)=>{
@@ -81,6 +82,28 @@ export const adminReducer = createReducer(initialState,(builder)=>{
       state.message = action.payload;
     })
     .addCase("deleteCourseFail", (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    })
+    .addCase("getCourseDetailsRequest", (state) => {
+      state.loading = true;
+    })
+    .addCase("getCourseDetailsSuccess", (state, action) => {
+      state.loading = false;
+      state.courseDetail = action.payload;
+    })
+    .addCase("getCourseDetailsFail", (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    })
+    .addCase("updateCourseRequest", (state) => {
+      state.loading = true;
+    })
+    .addCase("updateCourseSuccess", (state, action) => {
+      state.loading = false;
+      state.courseDetail = action.payload;
+    })
+    .addCase("updateCourseFail", (state, action) => {
       state.loading = false;
       state.error = action.payload;
     })

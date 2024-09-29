@@ -4,6 +4,7 @@ import getDataUri from '../utils/dataUri.js';
 import cloudinary from "cloudinary";
 import ErrorHandler from "../utils/errorHandler.js";
 import { catchAsyncError } from "../middlewars/catchAsyncError.js";
+import mongoose from 'mongoose';
 
 
 //Get all the courses 
@@ -183,3 +184,74 @@ export const deleteCourse = catchAsyncError(async (req, res, next) => {
     await stats[0].save();
   });
   
+  // Get course details
+  export const getCourseDetails = catchAsyncError(async (req, res, next) => {
+      const courseDetail = await Course.findById(req.params.id);
+  
+      if (!courseDetail) {
+          return next(new ErrorHandler("Course not found", 404));
+      }
+  
+      res.status(200).json({
+          success: true,
+          course: courseDetail,
+      });
+  });
+  
+  // Update course details by ID
+export const updateCourse = async (req, res) => {
+  try {
+    const { title, description, category, createdBy } = req.body;
+    const courseId = req.params.id;
+
+    // Find the course by ID
+    let course = await Course.findById(courseId);
+    console.log("course:", course);
+
+    if (!course) {
+      return res.status(404).json({ message: 'Course not found' });
+    }
+
+    // Update fields
+    course.title = title || course.title;
+    course.description = description || course.description;
+    course.category = category || course.category;
+    course.createdBy = createdBy || course.createdBy;
+
+    // Handle avatar update if a new image is uploaded
+    if (req.file) {
+      // Destroy the old image from Cloudinary if it exists
+      if (course.poster && course.poster.public_id) {
+        await cloudinary.v2.uploader.destroy(course.poster.public_id);
+      }
+
+      // Upload the new image to Cloudinary
+      const result = await cloudinary.v2.uploader.upload(req.file.path, {
+        folder: 'course_posters',
+        width: 150,
+        crop: 'scale',
+      });
+
+      // Update the course with the new image URL and public ID
+      course.poster = {
+        public_id: result.public_id,
+        url: result.secure_url,
+      };
+    }
+
+    // Save the updated course
+    await course.save();
+
+    res.status(200).json({
+      message: 'Course updated successfully',
+      course,
+    });
+  } catch (error) {
+    console.error(error);
+    if (error instanceof mongoose.Error.ValidationError) {
+      res.status(400).send(error.message);
+    } else {
+      res.status(500).send('Server error');
+    }
+  }
+};

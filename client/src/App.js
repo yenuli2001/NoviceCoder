@@ -20,6 +20,7 @@ import UpdateProfile from './components/profile/UpdateProfile';
 import Dashboard from './components/admin/dashboard/Dashboard';
 import CreateCourse from './components/admin/createCourses/Create';
 import AdminCourse from './components/admin/adminCourses/AdminCourses';
+import UpdateCourse from './components/admin/adminCourses/UpdateCourse';
 import User from './components/admin/user/User';
 import CodeEditor from './components/compiler/CodeEditor';
 import Lobby from './components/webRTC/lobby';
@@ -77,6 +78,7 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/courses" element={<Courses />} />
               <Route path="/course/:courseId" Component={CoursePage} />
+              <Route path="/courseDetail/:courseId" Component={UpdateCourse} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/request" element={<Request />} />
@@ -220,6 +222,17 @@ const App = () => {
                   </ProtectedRoute>
                 }
               />
+              <Route
+                path="/updateCourse/:id"
+                element={
+                  <ProtectedRoute isAuthenticated={isAuthenticated}
+                    adminRoute={true}
+                    isAdmin={user && user.role === 'admin'}
+                    >
+                      <UpdateCourse />
+                  </ProtectedRoute>
+                }
+              /> 
               <Route
                 path="/admin/users"
                 element={
