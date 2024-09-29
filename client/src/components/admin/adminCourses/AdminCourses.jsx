@@ -7,6 +7,7 @@ import { allCourses, allLectures } from '../../../redux/actions/course';
 import { addLecture, deleteCourse, deleteLecture } from '../../../redux/actions/admin';
 import { toast } from 'react-hot-toast';
 import Footer from '../../layout/Footer';
+import backgroundImage1 from '../../../assets/images/img5.jpeg'; // Import your image here
 import { useNavigate } from 'react-router-dom';
 
 const AdminCourses = () => {
@@ -57,13 +58,21 @@ const AdminCourses = () => {
     }, [dispatch, error, message]);
 
     return (
-        <div className="min-h-screen flex flex-col bg-gradient-to-r from-blue-500 to-purple-600">
+        <div style={{ backgroundColor: '#845695', minHeight: '100vh', paddingBottom: '40px' }}>
+            <div>
+                <img
+                    src={backgroundImage1}
+                    alt="Header"
+                    className="w-full h-64 object-cover"
+                    style={{ marginBottom: '20px' }}
+                />
+            </div>
             <div className="adminCoursesContainer flex-grow flex">
                 <div className="adminCourses flex-grow p-6">
-                    <h1 className="text-3xl font-bold mb-6 text-black">All Available Courses</h1>
+                    <h1 style={{ marginTop: 2, marginBottom:10, textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', color: 'black' }} className="text-5xl font-bold text-white">All Available Courses</h1>
                     <div className="overflow-x-auto">
-                        <table className="min-w-full table-auto bg-indigo-200 rounded-lg shadow-lg">
-                            <thead className="bg-gray-200 text-black uppercase text-sm leading-normal">
+                        <table className="min-w-full bg-white shadow-md rounded-lg">
+                            <thead className="bg-purple-700 text-white text-left text-sm uppercase font-semibold tracking-wider text-center">
                                 <tr>
                                     
                                     <th className="py-3 px-6 text-left">Poster</th>
@@ -75,7 +84,7 @@ const AdminCourses = () => {
                                     <th className="py-3 px-6 text-left">Action</th>
                                 </tr>
                             </thead>
-                            <tbody className="text-gray-800 text-sm font-light">
+                            <tbody className="text-gray-800 text-sm font-light text-center">
                                 {Array.isArray(courses) &&
                                     courses.map((item) => (
                                         <Row
@@ -105,7 +114,6 @@ const AdminCourses = () => {
             </div>
             <Footer />
         </div>
-
     );
 };
 
@@ -113,31 +121,33 @@ export default AdminCourses;
 
 function Row({ item, deleteHandler, courseDetail, navigate }) {
     return (
-        <tr className="border-b border-gray-200 hover:bg-gray-100">
-            
-            <td className="py-3 px-6 text-left">
-                <img src={item.poster.url} alt="poster" className="poster-img" />
+<tr className="border-b border-gray-200 hover:bg-gray-100 text-center">
+            <td className="py-3 px-6 whitespace-nowrap">
+                <span className="font-medium">{item._id}</span>
             </td>
-            <td className="py-3 px-6 text-left">
+            <td className="py-3 px-6">
+                <img src={item.poster.url} alt="poster" className="poster-img mx-auto" />
+            </td>
+            <td className="py-3 px-6">
                 <span>{item.title}</span>
             </td>
-            <td className="py-3 px-6 text-left">
+            <td className="py-3 px-6">
                 <span>{item.category}</span>
             </td>
-            <td className="py-3 px-6 text-left">
+            <td className="py-3 px-6">
                 <span>{item.createdBy}</span>
             </td>
-            <td className="py-3 px-6 text-left">
+            <td className="py-3 px-6">
                 <span>{item.views}</span>
             </td>
-            <td className="py-3 px-6 text-left">
+            <td className="py-3 px-6">
                 <span>{item.numOfVideos}</span>
             </td>
-            <td className="py-3 px-6 text-left">
-                <div className="flex item-center justify-start space-x-2">
+            <td className="py-3 px-6">
+                <div className="flex item-center justify-center space-x-2">
                     <button
                         onClick={() => courseDetail(item._id, item.title)}
-                        className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition duration-200"
+                        className="bg-indigo-500 text-white px-3 py-1 rounded hover:bg-indigo-600 transition duration-300 transform hover:scale-105"
                     >
                         View Lectures
                     </button>
@@ -149,7 +159,7 @@ function Row({ item, deleteHandler, courseDetail, navigate }) {
                     </button>
                     <button
                         onClick={() => deleteHandler(item._id)}
-                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition duration-200"
+                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition duration-300 transform hover:scale-105"
                     >
                         Delete
                     </button>
